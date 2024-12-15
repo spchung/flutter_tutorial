@@ -9,7 +9,6 @@ import 'package:flutter_template/widgets/home/home.dart';
 
 class HomeNavigator extends StatelessWidget {
   HomeNavigator({super.key, required this.title});
-  final counter = GetIt.instance<CounterProvider>();
   final String title;
 
   @override

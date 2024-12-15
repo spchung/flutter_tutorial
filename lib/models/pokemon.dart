@@ -1,5 +1,5 @@
-class Pokemon {
-  const Pokemon({
+class PokemonModel {
+  const PokemonModel({
     required this.id,
     required this.name,
     required this.type,

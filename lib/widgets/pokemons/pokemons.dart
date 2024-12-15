@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/models/pokemon.dart';
 
 const pokemons = [
-  Pokemon(
+  PokemonModel(
     id: 1,
     name: 'Bulbasaur',
     type: 'Grass',
     imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
     description: 'A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon.',
   ),
-  Pokemon(
+  PokemonModel(
     id: 4,
     name: 'Charmander',
     type: 'Fire',
     imageUrl: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png',
     description: 'The flame at the tip of its tail makes a sound as it burns. You can only hear it in quiet places.',
   ),
-  Pokemon(
+  PokemonModel(
     id: 7,
     name: 'Squirtle',
     type: 'Water',
@@ -54,7 +54,7 @@ class PokemonsPage extends StatelessWidget {
 }
 
 class PokemonCard extends StatelessWidget {
-  final Pokemon pokemon;
+  final PokemonModel pokemon;
   final Color backgroundColor;
 
   const PokemonCard({

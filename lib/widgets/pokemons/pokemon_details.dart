@@ -9,7 +9,7 @@ class PokemonDetailPage extends StatelessWidget {
     required this.pokemon,
   });
 
-  final Pokemon pokemon;
+  final PokemonModel pokemon;
 
   @override
   Widget build(BuildContext context) {

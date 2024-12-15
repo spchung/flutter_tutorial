@@ -9,7 +9,7 @@ class PokemonHomeCard extends StatelessWidget {
   });
 
   final Color backgroundColor;
-  final Pokemon pokemon;
+  final PokemonModel pokemon;
 
   @override
   Widget build(BuildContext context) {
