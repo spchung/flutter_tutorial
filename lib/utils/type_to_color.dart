@@ -21,10 +21,13 @@ final typeToColor = {
   'fairy': 0xFFD685AD,
 };
 
-Color typeToColorFunc(String type) {
+Color typeToColorFunc(String? type) {
+  if (type == null) {
+    return Colors.grey[200]!;
+  }
   type = type.toLowerCase();
   if (typeToColor[type] == null) {
-    return Colors.grey[100]!;
+    return Colors.grey[200]!;
   }
   return Color(typeToColor[type] ?? 0xFF000000);
 }
