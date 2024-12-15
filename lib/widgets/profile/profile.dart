@@ -12,58 +12,17 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    String imageUrl = 'https://picsum.photos/250?image=9';
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
-      ),
-      body: GestureDetector(
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailPage(
-            imageUrl: imageUrl,
-          ))).then((value) {
-            setState(() {
-              revisitCount++;
-            });
-          });
-        },
-        child: Center(
-          child: Column(
-            children: [
-              Hero(
-                tag: imageUrl,
-                child: Image.network(imageUrl)
-              ),
-              Text('Revisit count: $revisitCount')
-            ],
-          )
-        ),
-      ),
-    );
-  }
-}
-
-class DetailPage extends StatelessWidget {
-  const DetailPage({
-    super.key,
-    required this.imageUrl,
-  });
-
-  final String imageUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detail'),
+        title: const Text('Trainer Profile'),
+        backgroundColor: Colors.red[100],
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Hero(
-              tag: imageUrl,
-              child: Image.network(imageUrl)
-            ),
+            const Text('Profile Page'),
+            Text('Revisited $revisitCount times'),
           ],
         ),
       ),

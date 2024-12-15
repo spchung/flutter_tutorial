@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/providers/counter.dart';
 import 'package:provider/provider.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_template/providers/tab_navigator.dart';
@@ -8,17 +7,14 @@ import 'package:flutter_template/widgets/home/home.dart';
 
 
 class HomeNavigator extends StatelessWidget {
-  HomeNavigator({super.key, required this.title});
+  const HomeNavigator({super.key, required this.title});
   final String title;
 
   @override
   Widget build(BuildContext context) {
     final tabProvider = context.watch<TabNavigatorProvider>();
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
-      ),
+      extendBodyBehindAppBar: false,
       body: IndexedStack(
         index: tabProvider.tabIndex,
         children: const [

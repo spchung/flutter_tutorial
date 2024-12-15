@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_template/providers/selected_pokemon.dart';
 import 'package:flutter_template/widgets/pokemons/pokemon_home_card.dart';
+import 'package:flutter_template/utils/type_to_color.dart';
 import 'dart:math' as math;
 
 class HomePage extends StatefulWidget {
@@ -31,56 +32,70 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     final selectedPokemon = context.watch<SelectedPokemonProvider>().selectedPokemon;
+    final hasSelected = context.watch<SelectedPokemonProvider>().hasSelectedPokemon;
+
     if (selectedPokemon != null) {
-      return Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      PokemonHomeCard(pokemon: selectedPokemon),
-                      Positioned(
-                        right: 0,
-                        child: AnimatedBuilder(
-                          animation: _controller,
-                          builder: (_, child) {
-                            if (_controller.isAnimating) {
-                              return Transform.rotate(
-                                angle: -_controller.value * 2 * math.pi,
-                                child: child,
-                              );
-                            } 
-                            return child!;
-                          },
-                          child: IconButton(
-                            iconSize: 35,
-                            onPressed: () {
-                              _controller.repeat();
-                              Future.delayed(const Duration(seconds: 1), () {
-                                _controller.stop();
-                                if (context.mounted){
-                                  context.push('/pokemons');
-                                }
-                              });
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Pokemon Home'),
+          backgroundColor: typeToColorFunc(selectedPokemon.type),
+        ),
+        body:SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              if (hasSelected) Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Stack(
+                      children: [
+                        PokemonHomeCard(pokemon: selectedPokemon),
+                        Positioned(
+                          right: 0,
+                          child: AnimatedBuilder(
+                            animation: _controller,
+                            builder: (_, child) {
+                              if (_controller.isAnimating) {
+                                return Transform.rotate(
+                                  angle: -_controller.value * 2 * math.pi,
+                                  child: child,
+                                );
+                              } 
+                              return child!;
                             },
-                            icon: const Icon(Icons.catching_pokemon_outlined),
+                            child: IconButton(
+                              iconSize: 35,
+                              onPressed: () {
+                                _controller.repeat();
+                                Future.delayed(const Duration(seconds: 1), () {
+                                  _controller.stop();
+                                  if (context.mounted){
+                                    context.push('/pokemons');
+                                  }
+                                });
+                              },
+                              icon: const Icon(Icons.catching_pokemon_outlined),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
-              )
-            ),
-          ],
+                      ],
+                    )
+                  ],
+                )
+              ),
+            ],
+          )
         ),
+      )
       );
     }
-    return SingleChildScrollView(
-      child: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Pokemon Home'),
+        backgroundColor: Colors.grey[100],
+      ),
+      body: Center(
         child: Column(
           children: [
             const Padding(
@@ -96,7 +111,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             ),
           ],
         ),
-      )
+      ),
     );
   }
 }
