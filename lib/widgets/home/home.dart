@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/models/pokemon.dart';
-import 'package:flutter_template/widgets/pokemons/pokemons.dart';
+import 'package:flutter_template/widgets/pokemons/pokemon_horizontal_card.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_template/providers/selected_pokemon.dart';
@@ -90,13 +90,28 @@ class TrainerHomeCard extends StatelessWidget {
           width: double.infinity,
           child: Row(
             children: [
-              Text(trainer.name),
-              const SizedBox(width: 8),
-              Text(trainer.email),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(trainer.name),
+                      const SizedBox(width: 8),
+                      Text(trainer.email),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text('Favorite Pokemon: '),
+                      Text(trainer.favoritePokemon),
+                    ],
+                  ),
+                ],
+              ),
               const Spacer(),
               ElevatedButton(
                 onPressed: () => context.read<TabNavigatorProvider>().setTabIndex(1),
-                child: const Text('edit Profile')
+                child: const Text('edit')
               ),
             ],
           )
@@ -157,34 +172,17 @@ class _PokemonHomeCardState extends State<PokemonHomeCard> with SingleTickerProv
             width: double.infinity,
             child: Row(
               children: [
-            Text("No Pokemon selected"),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: () => context.push('/pokemons'),
-              child: const Text('Pick Pokemon')
-            ),
-          ],
+                const Text("No Pokemon selected"),
+                const Spacer(),
+                ElevatedButton(
+                  onPressed: () => context.push('/pokemons'),
+                  child: const Text('Pick Pokemon')
+                ),
+              ],
             )
           ),
         ),
       );
-      // return Center(
-      //   child: Column(
-          // children: [
-          //   const Padding(
-          //     padding:EdgeInsets.all(8.0),
-          //     child: Text("No Pokemon selected"),
-          //   ),
-          //   Padding(
-          //     padding: const EdgeInsets.all(8.0),
-          //     child: ElevatedButton(
-          //       onPressed: () => context.push('/pokemons'),
-          //       child: const Text('Pick Pokemon')
-          //     ),
-          //   ),
-          // ],
-      //   ),
-      // );
     }
     return Center(
       child: Column(
@@ -195,7 +193,7 @@ class _PokemonHomeCardState extends State<PokemonHomeCard> with SingleTickerProv
               children: [
                 Stack(
                   children: [
-                    PokemonCard(
+                    PokemonHorizontalCard(
                       pokemon: widget.selectedPokemon!,
                     ),
                     Positioned(

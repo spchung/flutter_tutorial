@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/models/pokemon.dart';
 
-class PokemonHomeCard extends StatelessWidget {
-  const PokemonHomeCard({
+class PokemonHorizontalCard extends StatelessWidget {
+  const PokemonHorizontalCard({
     super.key,
     this.backgroundColor = Colors.white,
     required this.pokemon,
