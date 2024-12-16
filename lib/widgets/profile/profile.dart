@@ -39,6 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: const Padding(
             padding: EdgeInsets.all(16.0),
             child: TrainerForm()
+            // child: Center(child: Text('Profile Page')),
           )
         ),
       ),

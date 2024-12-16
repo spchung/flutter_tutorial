@@ -8,14 +8,16 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) {
-        return HomeNavigator(title: 'Tempate Home');
+        return const HomeNavigator();
       },
-    ),
-    GoRoute(
-      path: '/pokemons',
-      builder: (context, state) {
-        return const PokemonsPage();
-      },
+      routes:[
+        GoRoute(
+          path: '/pokemons',
+          builder: (context, state) {
+            return const PokemonsPage();
+          },
+        ),
+      ]
     ),
   ],
 );

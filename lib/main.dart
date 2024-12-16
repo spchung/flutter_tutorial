@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_template/routes.dart';
 
 final getIt = GetIt.instance;
+
 void setup() {
   getIt.registerSingleton<TrainerProvider>(TrainerProvider());
   getIt.registerSingleton<TabNavigatorProvider>(TabNavigatorProvider());

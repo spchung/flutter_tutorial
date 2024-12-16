@@ -9,5 +9,4 @@ class TabNavigatorProvider extends ChangeNotifier {
     _tabIndex = index;
     notifyListeners();
   }
-
 }

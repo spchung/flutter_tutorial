@@ -1,6 +1,7 @@
 import 'pokemon_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/models/pokemon.dart';
+import 'package:go_router/go_router.dart';
 
 const pokemons = [
   PokemonModel(
@@ -34,6 +35,13 @@ class PokemonsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pokemons'),
+        // automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            context.pop('hello from pokemons');
+          },
+        ),
       ),
       body: GridView.builder(
         padding: const EdgeInsets.all(8),
@@ -67,7 +75,12 @@ class PokemonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => PokemonDetailPage(pokemon: pokemon)));
+        Navigator.push(
+          context, 
+          MaterialPageRoute(
+            builder: (context) => PokemonDetailPage(pokemon: pokemon)
+          ),
+        );
       },
       child: Container(
         decoration: BoxDecoration(

@@ -175,7 +175,7 @@ class _PokemonHomeCardState extends State<PokemonHomeCard> with SingleTickerProv
                 const Text("No Pokemon selected"),
                 const Spacer(),
                 ElevatedButton(
-                  onPressed: () => context.push('/pokemons'),
+                  onPressed: () => context.push('/pokemons').then((value) => print(value),),
                   child: const Text('Pick Pokemon')
                 ),
               ],

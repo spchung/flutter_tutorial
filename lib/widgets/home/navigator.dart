@@ -4,11 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter_template/providers/tab_navigator.dart';
 import 'package:flutter_template/widgets/profile/profile.dart';
 import 'package:flutter_template/widgets/home/home.dart';
-
-
 class HomeNavigator extends StatelessWidget {
-  const HomeNavigator({super.key, required this.title});
-  final String title;
+  const HomeNavigator({super.key});
 
   @override
   Widget build(BuildContext context) {
