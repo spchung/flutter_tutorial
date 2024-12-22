@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/models/pokemon.dart';
 import 'package:go_router/go_router.dart';
 
-const pokemons = [
+var pokemons = [
   PokemonModel(
     id: 1,
     name: 'Bulbasaur',
