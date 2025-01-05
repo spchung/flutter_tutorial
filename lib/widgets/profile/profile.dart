@@ -56,9 +56,10 @@ class TrainerForm extends StatefulWidget {
 
 class _TrainerFormState extends State<TrainerForm> {
   final _formKey = GlobalKey<FormState>();
-  final _controlledFieldController = TextEditingController();
+  // final _controlledFieldController = TextEditingController();
+  late final TextEditingController _controlledFieldController;
   
-  String controlFieldLabel = 'Controlled Field';
+  String controlFieldLabel = 'Controlled !!!!!';
   String? favoritePokemon;
   String? name;
   String? email;
@@ -72,7 +73,10 @@ class _TrainerFormState extends State<TrainerForm> {
   @override
   void initState() {
     super.initState();
+
+    _controlledFieldController = TextEditingController();
     _controlledFieldController.text = controlFieldLabel;
+    
     _controlledFieldController.addListener(() {
       setState(() {
         controlFieldLabel = _controlledFieldController.text;
@@ -97,7 +101,7 @@ class _TrainerFormState extends State<TrainerForm> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your trainer name.';
+                    return 'Please enter your trainer name!!!';
                   }
                   return null;
                 },

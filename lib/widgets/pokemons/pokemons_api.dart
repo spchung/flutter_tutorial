@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:convert';
+import 'package:flutter_template/widgets/pokemons/animated_pokemon_details.dart';
 import 'package:flutter_template/widgets/shared/loading.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -16,17 +17,16 @@ class PokemonsApiPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final rng = Random();
-    final endpoint = Uri.parse('https://pokeapi.co/api/v2/pokemon?limit=6&offset=${rng.nextInt(100)}');
+    final listEndpoint = Uri.parse('https://pokeapi.co/api/v2/pokemon?limit=6&offset=${Random().nextInt(1000)}');
     return Scaffold(
         appBar: AppBar(
             title: const Text('Pokemons API'),
         ),
         body: FutureBuilder(
-            future: http.get(endpoint),
+            future: http.get(listEndpoint),
             builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: SizedBox.shrink());
+                    return const Center(child: CircularProgressIndicator());
                 }
                 if (snapshot.hasError) {
                     return const Center(child: Text('Error fetching data'));
@@ -37,7 +37,6 @@ class PokemonsApiPage extends StatelessWidget {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     childAspectRatio: 0.9,
-
                     children: [
                         for (var pokemonRes in pokemonListModel.results)
                             FutureBuilder(
@@ -58,9 +57,8 @@ class PokemonsApiPage extends StatelessWidget {
                                             Navigator.push(
                                                 context, 
                                                 MaterialPageRoute(
-                                                    builder: (context) => PokemonDetailPage(
-                                                        pokemon: pokemonModel,
-                                                    )
+                                                    // builder: (context) => PokemonDetailPage(pokemon: pokemonModel,)
+                                                    builder: (context) => AnimatedPokemonDetailPage(pokemon: pokemonModel,)
                                                 ),
                                             );
                                         },

@@ -1,3 +1,5 @@
+import 'package:flutter_template/widgets/pokemons/animated_pokemon_details.dart';
+
 import 'pokemon_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/models/pokemon.dart';
@@ -78,7 +80,8 @@ class PokemonCard extends StatelessWidget {
         Navigator.push(
           context, 
           MaterialPageRoute(
-            builder: (context) => PokemonDetailPage(pokemon: pokemon)
+            // builder: (context) => PokemonDetailPage(pokemon: pokemon)
+            builder: (context) => AnimatedPokemonDetailPage(pokemon: pokemon)
           ),
         );
       },

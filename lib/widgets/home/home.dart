@@ -135,6 +135,7 @@ class PokemonHomeCard extends StatefulWidget {
   State<PokemonHomeCard> createState() => _PokemonHomeCardState();
 }
 
+// Explicit Animation with control over animation
 class _PokemonHomeCardState extends State<PokemonHomeCard> with SingleTickerProviderStateMixin{
   late final AnimationController _controller;
 
@@ -147,6 +148,7 @@ class _PokemonHomeCardState extends State<PokemonHomeCard> with SingleTickerProv
   @override
   void initState() {
     super.initState();
+    // 'this' refers to the SingleTickerProviderStateMixin
     _controller = AnimationController(vsync: this, duration: const Duration(seconds: 1));
   }
 
@@ -203,7 +205,7 @@ class _PokemonHomeCardState extends State<PokemonHomeCard> with SingleTickerProv
                         builder: (_, child) {
                           if (_controller.isAnimating) {
                             return Transform.rotate(
-                              angle: -_controller.value * 2 * math.pi,
+                              angle: - _controller.value * math.pi * 4, // change to change
                               child: child,
                             );
                           } 
